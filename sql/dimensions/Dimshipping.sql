@@ -1,0 +1,20 @@
+USE [SuperstoreBI]
+GO
+
+/****** Object:  Table [dw].[DimShipping]    Script Date: 8/29/2026 11:32:29 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dw].[DimShipping](
+	[ShippingKey] [int] IDENTITY(1,1) NOT NULL,
+	[ShipMode] [varchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ShippingKey] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+

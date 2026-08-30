@@ -100,9 +100,9 @@ This project addresses these requirements by separating data preparation, data i
 
 
 ## Dashboard Preview
-![Power BI dashboard Sales Overview](docs/DashboardScreenShots/SuperstorePage1.png)
-![Power BI Dashboard Product & Profability](docs/DashboardScreenShots/SuperstorePage2.png)
-![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperstorePage3.png)
+![Power BI dashboard Sales Overview](docs/DashboardScreenShots/SuperstorePg1.png)
+![Power BI Dashboard Product & Profability](docs/DashboardScreenShots/SuperstorePg2.png)
+![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperstorePg3.png)
 
 
 ## Key Engineering Decisions

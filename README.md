@@ -55,9 +55,16 @@ This project addresses these requirements by separating data preparation, data i
 ```                ┌───────────────────────┐
 ```                │     SQL STAGING       │
 ```                │                       │
-```                │  stg.GlobalSuperstore │
+```                │  stg.GlobalSuperstore │                             
 ```                └───────────┬───────────┘
 ```                            │
+```                            ▼
+```                ┌────────────────────── ─┐
+```                │     SQL SERVER AGENT   │
+```                │                        │
+```                │  Scheduled ETL Job     │
+```                └───────────┬────────── ─┘
+```                            │  executes
 ```                            ▼
 ```                ┌───────────────────────┐
 ```                │     ADVANCED ETL      │
@@ -97,6 +104,19 @@ This project addresses these requirements by separating data preparation, data i
 ```                └───────────────────────┘
 ```
 ⸻
+
+### ETL Automation
+
+SQL Server Agent is used to schedule and orchestrate the ETL workflow.
+
+The Agent job executes the required ETL procedures in sequence, including dimension loading, fact loading, and validation. This removes the need to manually execute the warehouse loading process.
+
+The ETL pipeline supports incremental loading, duplicate protection, validation, and error handling.
+
+SQL Server Agent is responsible for scheduling and orchestration, while the SQL stored procedures perform the actual data transformation and loading.  
+![Agent EXEC](docs/agentScreenshot/agentpro1.png)
+![Agent Scheduling](docs/agentScreenshot/schedulingpro1.png)
+![Agent Scheduling Success](docs/agentScreenshot/successpro1.png)
 
 
 ## Dashboard Preview

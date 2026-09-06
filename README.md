@@ -426,23 +426,23 @@ The value of this project is not only the dashboard.
 The solution provides evidence at multiple stages of the pipeline.
 
 ### Data quality evidence
-`
+```
   profile.py
        ↓
   Missing-value analysis
   Duplicate analysis
   Type analysis
   Date-range analysis
-`
+```
 ### Pipeline evidence
-`
+```
  etl.ETLLog
       ↓
 Execution status
 Rows processed
 Execution timestamps
 Errors
-`
+```
 ### Incremental-load evidence
 
 The pipeline can be executed again after the initial load without blindly duplicating previously processed records.

@@ -426,14 +426,14 @@ The value of this project is not only the dashboard.
 The solution provides evidence at multiple stages of the pipeline.
 
 ### Data quality evidence
-
-`profile.py
-`     ↓
-`Missing-value analysis
-`Duplicate analysis
-`Type analysis
-`Date-range analysis
-
+`
+  profile.py
+       ↓
+  Missing-value analysis
+  Duplicate analysis
+  Type analysis
+  Date-range analysis
+`
 ### Pipeline evidence
 `
  etl.ETLLog

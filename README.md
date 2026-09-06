@@ -39,69 +39,69 @@ This project addresses these requirements by separating data preparation, data i
 ⸻
 
 ## Solution Architecture
-
-```                         RAW DATA
-```                            │
-```                            ▼
-```                ┌───────────────────────┐
-```                │      Python / Pandas  │
-```                │                       │
-```                │     profile.py        │
-```                │     clean.py          │
-```                │     validate.py       │
-```                └───────────┬───────────┘
-```                            │
-```                            ▼
-```                ┌───────────────────────┐
-```                │     SQL STAGING       │
-```                │                       │
-```                │  stg.GlobalSuperstore │                             
-```                └───────────┬───────────┘
-```                            │
-```                            ▼
-```                ┌────────────────────── ─┐
-```                │     SQL SERVER AGENT   │
-```                │                        │
-```                │  Scheduled ETL Job     │
-```                └───────────┬────────── ─┘
-```                            │  executes
-```                            ▼
-```                ┌───────────────────────┐
-```                │     ADVANCED ETL      │
-```                │                       │
-```                │  • Validation         │
-```                │  • Watermark control  │
-```                │  • Incremental load   │
-```                │  • Stored procedures  │
-```                │  • Transactions       │
-```                │  • Error handling     │
-```                │  • ETL logging        │
-```                └───────────┬───────────┘
-```                            │
-```                            ▼
-```                ┌───────────────────────┐
-```                │   DATA WAREHOUSE      │
-```                │                       │
-```                │       DimDate         │
-```                │       DimCustomer     │
-```                │       DimProduct      │
-```                │       DimGeography    │
-```                │       DimShipping     │
-```                │       DimOrderPriority│
-```                │            │           │
-```                │            ▼           │
-```                │        FactSales       │
-```                └───────────┬───────────┘
-```                            │
-```                            ▼
-```                ┌───────────────────────┐
-```                │       POWER BI        │
-```                │                       │
-```                │  Semantic Model       │
-```                │  DAX Measures         │
-```                │  Time Intelligence    │
-```                │  Interactive Report   │
-```                └───────────────────────┘
+```
+                          RAW DATA
+                            │
+                               ▼
+                   ┌───────────────────────┐
+                   │      Python / Pandas  │
+                   │                       │
+                   │     profile.py        │
+                   │     clean.py          │
+                   │     validate.py       │
+                   └───────────┬───────────┘
+                               │
+                               ▼
+                   ┌───────────────────────┐
+                   │     SQL STAGING       │
+                   │                       │
+                   │  stg.GlobalSuperstore │                             
+                   └───────────┬───────────┘
+                               │
+                               ▼
+                   ┌────────────────────── ─┐
+                   │     SQL SERVER AGENT   │
+                   │                        │
+                   │  Scheduled ETL Job     │
+                   └───────────┬────────── ─┘
+                               │  executes
+                               ▼
+                   ┌───────────────────────┐
+                   │     ADVANCED ETL      │
+                   │                       │
+                   │  • Validation         │
+                   │  • Watermark control  │
+                   │  • Incremental load   │
+                   │  • Stored procedures  │
+                   │  • Transactions       │
+                   │  • Error handling     │
+                   │  • ETL logging        │
+                   └───────────┬───────────┘
+                               │
+                               ▼
+                   ┌───────────────────────┐
+                   │   DATA WAREHOUSE      │
+                   │                       │
+                   │       DimDate         │
+                   │       DimCustomer     │
+                   │       DimProduct      │
+                   │       DimGeography    │
+                   │       DimShipping     │
+                   │       DimOrderPriority│
+                   │            │           │
+                   │            ▼           │
+                   │        FactSales       │
+                   └───────────┬───────────┘
+                               │
+                               ▼
+                   ┌───────────────────────┐
+                   │       POWER BI        │
+                   │                       │
+                   │  Semantic Model       │
+                   │  DAX Measures         │
+                   │  Time Intelligence    │
+                   │  Interactive Report   │
+                   └───────────────────────┘
 ```
 ⸻
 
@@ -225,16 +225,16 @@ During fact loading, the ETL resolves source business keys into warehouse dimens
 
 ```
 For example:
-
-```Customer_ID     │
-```     ▼
-```DimCustomer
-```     │
-```     ▼
-```CustomerKey
-```     │
-```     ▼
-```FactSales
+```
+  Customer_ID     │
+        ▼
+   DimCustomer
+        │
+        ▼
+   CustomerKey
+        │
+        ▼
+   FactSales
 ```
 The same approach is used for products, geography, shipping, order priority, and dates.
 
@@ -274,23 +274,24 @@ The pipeline processes dimensions before facts so the required dimension keys ar
 A watermark is used to identify the previously processed boundary.
 
 Conceptually:
-
-```Previous Watermark
-```        │
-```        ▼
-```   Identify New Data
-```        │
-```        ▼
-```   Load Dimensions
-```        │
-```        ▼
-```      Load Facts
-```        │
-```        ▼
-``` Successful Transaction
-```        │
-```        ▼
-``` Update Watermark
+```
+   Previous Watermark
+           │
+           ▼
+      Identify New Data
+           │
+           ▼
+      Load Dimensions
+           │
+           ▼
+         Load Facts
+           │
+           ▼
+    Successful Transaction
+           │
+           ▼
+    Update Watermark
+```
 
 This avoids repeatedly processing the entire dataset when only a new incremental range needs to be processed.
 
@@ -303,26 +304,26 @@ The design follows the general watermark-based incremental loading pattern docum
 The ETL pipeline uses SQL transactions and error handling to prevent partially completed warehouse loads.
 
 The process follows:
-
-```BEGIN TRANSACTION
-```        │
-```        ├── Validate
-```        ├── Load Dimensions
-```        ├── Load Facts
-```        ├── Update Watermark
-```        │
-```        ▼
-```     COMMIT
+```
+   BEGIN TRANSACTION
+           │
+           ├── Validate
+           ├── Load Dimensions
+           ├── Load Facts
+           ├── Update Watermark
+           │
+           ▼
+        COMMIT
 ```
 If a critical failure occurs:
 
 ```ERROR
-```  │
-```  ▼
-```ROLLBACK
-```  │
-```  ▼
-```ETL LOG
+    │
+    ▼
+ROLLBACK
+    │
+    ▼
+  ETL LOG
 ```
 This is important because a failed ETL process should not leave the warehouse in an inconsistent state.
 

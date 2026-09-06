@@ -17,6 +17,11 @@ The objective is to create a reporting solution that is reliable, maintainable, 
 The project follows a dimensional modeling approach with a central sales fact table and supporting dimensions, a pattern well suited to analytical workloads and Power BI semantic models.
 
 ⸻
+## Dashboard Preview
+![Power BI dashboard Sales Overview](docs/DashboardScreenShots/SuperstorePg1.png)
+![Power BI Dashboard Product & Profability](docs/DashboardScreenShots/SuperstorePg2.png)
+![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperstorePg3.png)
+⸻
 
 ## Business Problem
 
@@ -118,12 +123,7 @@ SQL Server Agent is responsible for scheduling and orchestration, while the SQL 
 ![Agent Scheduling](docs/agentScreenshot/schedulingpro1.png)
 ![Agent Scheduling Success](docs/agentScreenshot/successpro1.png)
 
-
-## Dashboard Preview
-![Power BI dashboard Sales Overview](docs/DashboardScreenShots/SuperstorePg1.png)
-![Power BI Dashboard Product & Profability](docs/DashboardScreenShots/SuperstorePg2.png)
-![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperstorePg3.png)
-
+⸻
 
 ## Key Engineering Decisions
 
@@ -223,10 +223,10 @@ The warehouse separates business identifiers from warehouse surrogate keys.
 
 During fact loading, the ETL resolves source business keys into warehouse dimension keys.
 
-```
+
 For example:
 ```
-  Customer_ID     │
+  Customer_ID     
         ▼
    DimCustomer
         │
@@ -317,7 +317,8 @@ The process follows:
 ```
 If a critical failure occurs:
 
-```ERROR
+```
+   ERROR
     │
     ▼
 ROLLBACK
@@ -434,14 +435,14 @@ The solution provides evidence at multiple stages of the pipeline.
 `Date-range analysis
 
 ### Pipeline evidence
-
-`etl.ETLLog
-`     ↓
+`
+ etl.ETLLog
+      ↓
 Execution status
 Rows processed
 Execution timestamps
 Errors
-
+`
 ### Incremental-load evidence
 
 The pipeline can be executed again after the initial load without blindly duplicating previously processed records.
@@ -484,7 +485,7 @@ It demonstrates the ability to build the data foundation behind the dashboard.
 ### From a BI Developer perspective
 
 The solution demonstrates:
-
+```
 Data Profiling
       ↓
 Data Quality
@@ -504,7 +505,7 @@ Data Validation
 Power BI Semantic Model
       ↓
 Business Insights
-
+```
 ### Business value
 
 The architecture provides:

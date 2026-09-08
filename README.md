@@ -17,6 +17,25 @@ The objective is to create a reporting solution that is reliable, maintainable, 
 The project follows a dimensional modeling approach with a central sales fact table and supporting dimensions, a pattern well suited to analytical workloads and Power BI semantic models.
 
 ⸻
+## Project Highlights
+
+- End-to-end BI pipeline from raw source data to Power BI reporting
+- Python/Pandas data profiling, cleaning, and validation
+- SQL Server staging and dimensional data warehouse
+- Star schema with fact and dimension tables
+- Surrogate-key based dimension lookups
+- Incremental ETL using watermark control
+- Duplicate protection and idempotent processing
+- Transaction-based ETL with rollback and error handling
+- ETL execution logging and operational traceability
+- SQL Server Agent scheduling and orchestration
+- Power BI semantic model with advanced DAX
+- Time-intelligence analysis
+- Dynamic Row-Level Security (RLS)
+- Country-specific reporting with dynamic visual indicators
+- Interactive executive, product, profitability, geography, and customer analysis
+
+⸻
 ## Dashboard Preview
 
 ### Sales Overview
@@ -28,8 +47,21 @@ The project follows a dimensional modeling approach with a central sales fact ta
 ### Geography & Customers
 ![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperStore3page3.png)
 
-### Report Video
-![Power BI Dashboard Screen Record](docs/DashboardVideo/SuperStorePro2Short.mp4)
+⸻
+
+## Interactive Report Features
+
+The Power BI report includes:
+
+- Cross-filtering between visuals
+- Interactive slicers
+- Page navigation
+- Dynamic KPI calculations
+- Time-intelligence analysis
+- Dynamic RLS filtering
+- Country-specific visual indicators
+- Drillable business analysis across sales, profitability,
+  products, customers, and geography
 
 ⸻
 
@@ -407,6 +439,27 @@ Examples include:
 * Previous-period comparisons
 * Period-over-period analysis
 
+⸻ 
+
+## Row-Level Security (RLS)
+
+The Power BI report implements dynamic Row-Level Security to provide
+country-specific access for different management users.
+
+When a country manager accesses the report:
+
+- The dataset is filtered to the manager's assigned country.
+- KPIs update automatically.
+- Charts and tables reflect only authorized data.
+- The report's country indicator/flag changes according to the active context.
+- The same report can therefore serve multiple country managers without
+  creating separate reports for each user.
+
+This demonstrates how the same semantic model can support secure,
+role-specific reporting.
+
+⸻
+
 
 ## Data Model
 
@@ -645,18 +698,17 @@ The current watermark implementation demonstrates the incremental ETL pattern, w
 
 ## Future Enhancements
 
-Potential extensions include:
-
-* Microsoft Fabric implementation
-* Automated pipeline orchestration
-* CI/CD
-* Automated data-quality tests
-* Power BI Service deployment
-* Row-level security
-* Incremental refresh
-* Additional business domains
-* Production-grade monitoring
-* Slowly Changing Dimensions with source-system change detection
+- REST API ingestion
+- PostgreSQL implementation
+- Microsoft Fabric / cloud deployment
+- CI/CD
+- Automated test execution
+- Power BI Service deployment
+- Incremental refresh
+- Production monitoring and alerting
+- Source-system change tracking / CDC
+- Secrets management
+- Multi-environment deployment
 
 ⸻
 

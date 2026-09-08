@@ -29,7 +29,7 @@ The project follows a dimensional modeling approach with a central sales fact ta
 ![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperStore3page3.png)
 
 ### Report Video
-![Power BI Dashboard Screen Record](docs/DashboardVideo/SuperStorePro2.mp4)
+![Power BI Dashboard Screen Record](docs/DashboardVideo/SuperStorePro2Short.mp4)
 
 ⸻
 

@@ -18,9 +18,19 @@ The project follows a dimensional modeling approach with a central sales fact ta
 
 ⸻
 ## Dashboard Preview
-![Power BI dashboard Sales Overview](docs/DashboardScreenShots/SuperstorePg1.png)
-![Power BI Dashboard Product & Profability](docs/DashboardScreenShots/SuperstorePg2.png)
-![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperstorePg3.png)
+
+### Sales Overview
+![Power BI dashboard Sales Overview](docs/DashboardScreenShots/SuperStore2page1.png)
+
+### Product & Profability
+![Power BI Dashboard Product & Profability](docs/DashboardScreenShots/SuperStore2page2.png)
+
+### Geography & Customers
+![Power BI Dashboard Geography & Customers](docs/DashboardScreenShots/SuperStore3page3.png)
+
+### Report Video
+![Power BI Dashboard Screen Record](docs/DashboardVideo/SuperStorePro2.mp4)
+
 ⸻
 
 ## Business Problem
